@@ -7,25 +7,28 @@ import Cookies from 'js-cookie';
 function Navbar() {
   const [session, setSession] = useState(false);
 
-  const token = Cookies.get('token');
+    let token;
 
-  const handleLogout = async () => {
-    await signOut(auth);
-    Cookies.remove('token');
-    Cookies.remove('user');
-    sessionHandle();
-    window.location.href = '/'; // Redirigir a la página de inicio
-  };
-
-  const sessionHandle = () => {
-    if (token) {
-      setSession(true);
-      console.log('token exists');
-    } else {
-      setSession(false);
-      console.log('token does not exist');
+    if (typeof window !== 'undefined') {
+        token = localStorage.getItem('token');
     }
-  };
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        sessionHandle();
+    }
+
+    const sessionHandle = () => {
+        if (token) {
+            setSession(true);
+            console.log('token exists')
+        }else{
+            setSession(false);
+            console.log('token does not exists')
+        }
+    }
 
   useEffect(() => {
     sessionHandle();
@@ -40,7 +43,7 @@ function Navbar() {
         <div className="w-full flex items-center justify-end">
           {session ? (
             <div className="flex gap-4">
-              <a href="/Home" className="buttons">
+              <a href="/home" className="buttons">
                 Home
               </a>
               <button
