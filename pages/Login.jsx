@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/navbar";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../api/firebase/firebase";
+import { auth } from "./api/firebase/firebase";
 
 function Login() {
   const router = useRouter();
@@ -64,9 +64,9 @@ function Login() {
           </a>
           <div className="flex items-center justify-center gap-2">
             <p className="text-center text-lg gap-1">No account?</p>
-            <Link href="/register" className="font-medium text-indigo-500 underline-offset-4 hover:underline">
+            <a href="/register" className="font-medium text-indigo-500 underline-offset-4 hover:underline">
               Create One
-            </Link>
+            </a>
           </div>
         </section>
       </main>

@@ -45,15 +45,19 @@ function Navbar() {
               </a>
               <button
                 onClick={handleLogout}
-                className="text-white font-bold border py-2 px-4 rounded-lg hover:bg-slate-800 transition duration-300"
-              >
+                className="text-white font-bold border py-2 px-4 rounded-lg hover:bg-slate-800 transition duration-300">
                 Logout
               </button>
             </div>
           ) : (
-            <a href="/login" className="buttons">
-              Login
-            </a>
+            <div className="flex gap-4">
+                <a href="/login" className="buttons">
+                Login
+                </a>
+                <a href="/register" className="buttons">
+                Register
+                </a>
+            </div>
           )}
         </div>
       </div>
