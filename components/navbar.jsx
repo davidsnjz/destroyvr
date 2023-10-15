@@ -52,7 +52,7 @@ function Navbar() {
             </div>
           ) : (
             <a href="/login" className="buttons">
-              Sign In
+              Login
             </a>
           )}
         </div>
