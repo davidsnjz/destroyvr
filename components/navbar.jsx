@@ -35,6 +35,7 @@ function Navbar() {
   }, []);
 
   return (
+    <div className='nav1'>
     <div className="flex items-center w-full bg-slate-700 py-2 px-8 fixed" >
       <div className="flex w-full" >
         <div className="flex justify-start" >
@@ -65,6 +66,7 @@ function Navbar() {
         </div>
       </div>
     </div>
+     </div>
   );
 }
 
