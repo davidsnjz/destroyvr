@@ -9,7 +9,7 @@ export const ContextWallet = createContext({});
 
 export function ConnectWalletProvider({children}) {
 
-    // Estado de la wallet
+    // Estado de la wallet4
     const [wallet, setWallet] = useState(null);
 
     // Conectar wallet

@@ -1,29 +1,93 @@
-import { useContext } from "react";
+import { useContext} from "react";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase";
-import ultimateDestroyIMG from "../assets/Images/UDVR.png";
+import { auth } from "../pages/api/firebase/firebase";
 import { ContextWallet } from "../Hooks/ConnectWallet";
+import { async } from "@firebase/util";
+
+
+
 
 function HomePage() {
   // se llama el contexto
+  const router = useRouter();
   const contextFata = useContext(ContextWallet);
+  const [publicKey, setPublicKey] = useState(null);
+  const [session, setSession] = useState(false);
 
+
+  let token;
+
+    if (typeof window !== 'undefined') {
+        token = localStorage.getItem('token');
+    }
+
+    
   // logout
   const handleLogout = async () => {
+    console.log("Desconectando la cuenta..");
     await signOut(auth);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  };
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    sessionHandle();
+}
 
-  // connect wallet
-  const ConnWall = () => {
-    contextFata.ConnectWallet;
+const sessionHandle = () => {
+    if (token) {
+        setSession(true);
+        console.log('token exists')
+    }else{
+        setSession(false);
+        console.log('token does not exists')
+    }
+}
+
+useEffect(() => {
+sessionHandle();
+}, []);
+
+
+
+
+
+  // *connect wallet
+  const ConnWall = async () => {
+    //!si phantom no esta instalado
+    const provider = window?.phantom?.solana;
+    const { solana } = window;
+
+    if (!provider?.isPhantom || !solana.isPhantom) {
+      toast.error("phamtom no instalado");
+      setTimeout(() => {
+        window.open("https://phantom.app/", "_blank");
+      }, 2000);
+
+      return;
+    }
+
+    //? si phantom esta instalado 
+
+    let phantom;
+    if (provider?.isPhantom) phantom = provider;
+
+    const { publicKey } = await phantom.connect();
+    console.log("pulicKey", publicKey.toString());//!muestra public key
+    setPublicKey(publicKey.toString());//*guarda la publickey
+    window.localStorage.setItem("publicKey", publicKey.toString());//guarda eb local sotorage
+
+   // toast.success("tu wallet se conecto");
   };
-  // disconnect wallet
-  const DisConnWall = () => {
-    contextFata.signOutWa();
+  // *disconnect wallet
+  const DisConnWall = async () => {
+    if (window) {
+      const { solana } = window;
+      window.localStorage.removeItem("publicKey");
+      setPublicKey(null);
+      solana.disconnect();
+      router.reload(window?.location?.pathname);
+    }
   };
 
   // check wallet
@@ -41,7 +105,7 @@ function HomePage() {
     //   updateUserWallet(walletData);
       //*--------------------------//
 
-      contextFata.ConnectWallet();
+      
     } else {
       console.log("no hay wallet");
     }
@@ -53,12 +117,9 @@ function HomePage() {
       <nav className="flex items-center w-full bg-slate-700 py-2 px-8 fixed">
         <div className="flex w-full">
           <div className="w-1/2">
-            <a href="/" className="flex justify-start">
-              <img src={ultimateDestroyIMG} className="h-14 w-auto" />
-            </a>
           </div>
           <div className="w-1/2 flex items-center justify-end gap-4">
-            {contextFata.wallet ? (
+            {publicKey ? (
               <button
                 onClick={DisConnWall}
                 className="text-white font-bold border py-2 px-4 rounded-lg hover:bg-slate-800 transition duration-300"
@@ -93,11 +154,7 @@ function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="w-full bg-gray-900 rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center">
               <div className="mb-8">
-                <img
-                  className="object-center object-cover rounded-full h-36 w-36"
-                  src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                  alt="photo"
-                />
+              
               </div>
               <div className="text-center">
                 <p className="text-xl text-white font-bold mb-2">Dany Bailey</p>

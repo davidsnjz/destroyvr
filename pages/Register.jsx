@@ -26,7 +26,7 @@ function RegisterUser() {
         localStorage.setItem("token", user.accessToken);
         localStorage.setItem("user", JSON.stringify(user));
 
-        router.push("/login");
+        router.push("/Login");
       }
     );
   };

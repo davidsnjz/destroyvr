@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { signOut } from 'firebase/auth';
-import { auth } from '../firebase/firebase';
-import ultimateDestroyIMG from '../assets/Images/ISO.svg'
+import { auth } from '../pages/api/firebase/firebase';
 import Cookies from 'js-cookie';
 
 function Navbar() {
@@ -14,6 +13,7 @@ function Navbar() {
     }
 
     const handleLogout = async () => {
+        console.log("Desconectando la cuenta..");
         await signOut(auth);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -47,17 +47,17 @@ function Navbar() {
                 Home
               </a>
               <button
-                onClick={handleLogout}
+                onClick={handleLogout()}
                 className="text-white font-bold border py-2 px-4 rounded-lg hover:bg-slate-800 transition duration-300">
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex gap-4">
-                <a href="/login" className="buttons">
+                <a href=" /Login" className="buttons">
                 Login
                 </a>
-                <a href="/register" className="buttons">
+                <a href=" /Register" className="buttons">
                 Register
                 </a>
             </div>
