@@ -6,12 +6,13 @@ import ultimateIMG from '../assets/Images/UDVR.png'
 
 export default function Home() {
   return (
-    
+    <div className='back'>
     <div >
+      
       <div className='nav1'>
         <Navbar />
       </div>
-      
+      .
       <div className='logoholder'>
         
         <div className=' flex items-center justify-center bgHome h-screen'>
@@ -24,7 +25,7 @@ export default function Home() {
             />
           </div>
           <div className='getS'>
-            <a href="/register">Get started</a>
+            <a href="/Register">Get started</a>
           </div>
         </div>
         
@@ -44,7 +45,7 @@ export default function Home() {
       
     </div>
 
-    
+    </div>
     
   )
 }
