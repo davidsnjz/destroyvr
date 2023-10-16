@@ -32,6 +32,7 @@ function Login() {
   return (
     <>
       <Navbar />
+      <div className='logoholder'>
       <main className="w-screen flex min-h-screen items-center justify-center bg-gray-900 text-white">
         <section className="flex w-[30rem] flex-col space-y-10">
           <div className="text-center text-4xl font-medium">Log In</div>
@@ -70,6 +71,7 @@ function Login() {
           </div>
         </section>
       </main>
+      </div>
     </>
   );
 }

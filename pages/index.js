@@ -8,9 +8,9 @@ export default function Home() {
   return (
     
     <div >
-      <div className='nav1'>
+    
         <Navbar />
-      </div>
+ 
       
       <div className='logoholder'>
         
