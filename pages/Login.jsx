@@ -31,11 +31,12 @@ function Login() {
 
   return (
     <>
-      <Navbar />
-      <div className='logoholder'>
+      {/*<Navbar />*/}
+      <div className='form'>
+        <div className="form-inputs">
       <main className="w-screen flex min-h-screen items-center justify-center bg-gray-900 text-white">
         <section className="flex w-[30rem] flex-col space-y-10">
-          <div className="text-center text-4xl font-medium">Log In</div>
+          <div className="text-center text-4xl font-medium tittle">Log In</div>
           <form className="px-8 flex items-center flex-col gap-4">
             <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
               <input
@@ -55,22 +56,23 @@ function Login() {
             </div>
             <button
               onClick={(e) => { handleSignIn(e) }}
-              className="transform rounded-sm bg-indigo-600 py-2 px-4 font-bold duration-300 hover:bg-indigo-400 text-center"
+              className=" button-form transform rounded-sm bg-indigo-600 py-2 px-4 font-bold duration-300 hover:bg-indigo-400 text-center"
             >
               LOG IN
             </button>
           </form>
-          <a href="#" className="transform text-center font-semibold text-gray-500 duration-300 hover:text-gray-300">
+          <a href="#" className="form-input">
             FORGOT PASSWORD?
           </a>
           <div className="flex items-center justify-center gap-2">
             <p className="text-center text-lg gap-1">No account?</p>
-            <a href="/register" className="font-medium text-indigo-500 underline-offset-4 hover:underline">
+            <a href=" /Register" className="font-medium text-indigo-500 underline-offset-4 hover:underline">
               Create One
             </a>
           </div>
         </section>
       </main>
+      </div>
       </div>
     </>
   );

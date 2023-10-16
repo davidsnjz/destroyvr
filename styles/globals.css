@@ -88,6 +88,51 @@ a {
   float: left;
 }
 
+
+.form{
+  text-align: center;
+  height:100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  float: left;
+}
+
+
+input{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 400px;
+  height: 30px;
+  background-color: #1a1a1a;
+  outline: none;
+}
+
+button{
+  margin-top: 20px;
+  margin-bottom: 30px;
+ 
+}
+
+
+.button-form{
+  background-color: #1a1a1a;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  outline: none;
+  border: 0;
+}
+
+
+.tittle{
+  font-size: 60px;
+}
+.form-input{
+  margin-top:60px;
+}
+
 .nav1{
 
   font-size: 1.5em;
