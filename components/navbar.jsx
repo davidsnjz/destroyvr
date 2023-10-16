@@ -35,15 +35,15 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="flex items-center w-full bg-slate-700 py-2 px-8 fixed">
-      <div className="flex w-full">
-        <div className="flex justify-start">
+    <div className="flex items-center w-full bg-slate-700 py-2 px-8 fixed" >
+      <div className="flex w-full" >
+        <div className="flex justify-start" >
           
         </div>
-        <div className="w-full flex items-center justify-end">
+        <div className="w-full flex items-center justify-end" >
           {session ? (
-            <div className="flex gap-4">
-              <a href="/home" className="buttons">
+            <div className="flex gap-4" >
+              <a href="/home" className="buttons" >
                 Home
               </a>
               <button
@@ -54,7 +54,7 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex gap-4">
-                <a href=" /Login" className="buttons">
+                <a href="/login" className="buttons" >
                 Login
                 </a>
                 <a href=" /Register" className="buttons">
