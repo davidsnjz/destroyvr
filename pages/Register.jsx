@@ -1,5 +1,6 @@
 import { useState } from "react";
 //import Navbar from "../components/navbar";
+
 import { useRouter } from "next/router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, saveUserWallet } from "./api/firebase/firebase";
@@ -33,9 +34,12 @@ function RegisterUser() {
 
   return (
     <>
+
+<div className='form'>
+        <div className="form-inputs">
       <main className="w-screen flex min-h-screen items-center justify-center bg-gray-900 text-white">
         <section className="flex w-[30rem] flex-col space-y-10">
-          <div className="text-center text-4xl font-medium">Register</div>
+          <div className="text-center text-4xl font-medium tittle">Register</div>
 
           <form className="px-8 flex items-center flex-col gap-4">
             <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
@@ -45,7 +49,7 @@ function RegisterUser() {
                 }}
                 type="email"
                 placeholder="Email"
-                className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none"
+                className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none form-input"
               />
             </div>
             <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
@@ -62,7 +66,7 @@ function RegisterUser() {
               onClick={(e) => {
                 handleRegister(e);
               }}
-              className="transform rounded-md bg-indigo-600 py-2 px-4 font-bold duration-300 hover:bg-indigo-400 text-center"
+              className="transform rounded-md bg-indigo-600 py-2 px-4 font-bold duration-300 hover:bg-indigo-400 text-center button-form"
             >
               Register
             </button>
@@ -74,6 +78,8 @@ function RegisterUser() {
           </div>
         </section>
       </main>
+      </div>
+      </div>
     </>
   );
 }

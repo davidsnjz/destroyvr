@@ -8,11 +8,10 @@ export default function Home() {
   return (
     <div className='back'>
     <div >
-      
       <div className='nav1'>
         <Navbar />
       </div>
-      .
+      
       <div className='logoholder'>
         
         <div className=' flex items-center justify-center bgHome h-screen'>
