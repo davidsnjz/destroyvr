@@ -1,5 +1,6 @@
 import { useState } from "react";
 //import Navbar from "../components/navbar";
+
 import { useRouter } from "next/router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, saveUserWallet } from "./api/firebase/firebase";
